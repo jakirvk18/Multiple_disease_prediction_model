@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Heart Disease Prediction</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" xintegrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta8PUbHaU+RW2QjU/2yZ9hB7lJqK0I0386sIq4+9lD5g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/heart.css') }}">
+</head>
+<body>
+
+<div id="heart-main-div">
+    <h1 style="color: red; text-align: center;">
+        <i class="fa-solid fa-heart-pulse"></i> Heart Disease Prediction
+
+    </h1>
+
+    <div class="disease-info">
+        <i class="fa-solid fa-circle-info fa-bounce"></i> <b>Info : </b>
+        Heart disease refers to a range of conditions that affect your heart. Diseases under the heart disease umbrella
+        include blood vessel diseases, such as coronary artery disease; heart rhythm problems (arrhythmias); and heart
+        defects you're born with (congenital heart defects), among others. Symptoms often include chest pain, shortness
+        of breath, and fatigue. Lifestyle changes, medications, and sometimes surgery can manage heart disease. Early
+        detection and intervention are crucial for preventing serious complications.
+    </div>
+    <br>
+    <h2 style="text-align: left; width: 90%;">
+        Fill the form
+    </h2>
+    <form>
+        <div class="form-group">
+            <label for="name">Name :</label>
+            <input type="text" id="name" name="name" placeholder="Name" required>
+        </div>
+        <div class="form-group">
+            <label for="age">Age :</label>
+            <input type="number" id="age" name="age" placeholder="(0 - 120) in years" min="0" max="120" required>
+        </div>
+        <div class="form-group">
+            <label for="sex">Sex :</label>
+            <select id="sex" name="sex" required>
+                <option value="">Select Sex</option>
+                <option value="1">Male</option>
+                <option value="0">Female</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="cp">Chest Pain Type (CP) :</label>
+            <select id="cp" name="cp" required>
+                <option value="">Select Chest Pain Type</option>
+                <option value="0">Typical Angina</option>
+                <option value="1">Atypical Angina</option>
+                <option value="2">Non-Anginal Pain</option>
+                <option value="3">Asymptomatic</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="trestbps">Resting Blood Pressure :</label>
+            <input type="number" id="trestbps" name="trestbps" placeholder="(90-200) mmHg" min="90" max="200" required>
+        </div>
+        <div class="form-group">
+            <label for="chol">Cholesterol :</label>
+            <input type="number" id="chol" name="chol" placeholder="(100-600) mg/dL " min="100" max="600" required>
+        </div>
+        <div class="form-group">
+            <label for="fbs">Fasting Blood Sugar > 120 mg/dl :</label>
+            <select id="fbs" name="fbs" required>
+                <option value="">Select Status</option>
+                <option value="1">Yes</option>
+                <option value="0">No</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="restecg">Resting Electrocardiographic Results :</label>
+            <select id="restecg" name="restecg" required>
+                <option value="">Select Result</option>
+                <option value="0">Normal</option>
+                <option value="1">ST-T wave abnormality</option>
+                <option value="2">Left ventricular hypertrophy</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="thalach">Maximum Heart Rate Achieved :</label>
+            <input type="number" id="thalach" name="thalach" placeholder="(70-220) bpm" min="70" max="220" required>
+        </div>
+        <div class="form-group">
+            <label for="exang">Exercise Induced Angina :</label>
+            <select id="exang" name="exang" required>
+                <option value="">Select Status</option>
+                <option value="1">Yes</option>
+                <option value="0">No</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="oldpeak">ST Depression Induced by Exercise Relative to Rest :</label>
+            <input type="number" id="oldpeak" name="oldpeak" placeholder="(0.0-6.2)" min="0.0" max="6.2" step="0.1" required>
+        </div>
+        <div class="form-group">
+            <label for="slope">Slope of the Peak Exercise ST Segment :</label>
+            <select id="slope" name="slope" required>
+                <option value="">Select Slope</option>
+                <option value="0">Upsloping</option>
+                <option value="1">Flat</option>
+                <option value="2">Downsloping</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="ca">Number of Major Vessels Colored by Flourosopy (0-3) :</label>
+            <select id="ca" name="ca" required>
+                <option value="">Select Number of Vessels</option>
+                <option value="0">0</option>
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="thal">Thalassemia :</label>
+            <select id="thal" name="thal" required>
+                <option value="">Select Thalassemia Type</option>
+                <option value="0">Unknown</option> <option value="1">Normal</option>
+                <option value="2">Fixed Defect</option>
+                <option value="3">Reversible Defect</option>
+            </select>
+        </div>
+ 
+        
+        <div class="form-group">
+            <button type="submit">Predict Risk of Heart Disease</button>
+        </div>
+        <div class="form-group">
+            <button type="reset">Reset data</button>
+        </div>
+    </form>
+
+    <div id="prediction-result">
+        </div>
+
+</div>
+
+<script src ="{{ url_for('static', filename='js/heart.js') }}"></script>
+</body>
+</html>
