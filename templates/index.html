@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Disease Prediction Dashboard</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/index.css') }}">
+</head>
+<body>
+
+    <header>
+        <h1>Multiple Disease Prediction System <i class="fa-solid fa-briefcase-medical"></i></h1>
+    </header>
+
+    <nav class="navbar">
+        <a href="#" id="home-nav-link" class="nav-link">
+            <i class="fa-solid fa-house"></i>&emsp;Home
+        </a>
+        <a href="#" id="diabetes-nav-link" class="nav-link">
+            <i class="fa-regular fa-circle fa-flip"></i>&emsp;Diabetes</a>
+        <a href="#" id="heart-nav-link" class="nav-link">
+            <i class="fa-solid fa-heart-pulse fa-beat"></i>&emsp;Heart Disease</a>
+        <a href="#" id="lung-nav-link" class="nav-link">
+            <i class="fa-solid fa-lungs fa-beat-fade"></i>&emsp;Lung Cancer</a>
+    </nav>
+
+    <main style="background-image: url('{{ url_for('static', filename='images/background.png') }}');">
+        <div id="initial-message">
+            <p><i class="fa-solid fa-hand-point-up" style="margin-right: 10px;color: rgb(2, 111, 189);"></i> Please select a disease from the navigation above to get started.</p>
+            <p>Fill in the form to predict your risk and receive personalized health tips.</p>
+        </div>
+
+        <iframe id="prediction-frame" src="" frameborder="0"></iframe>
+    </main>
+    
+    <footer>
+        <p>&copy; 2025 Developed by Jakir Hussain.</p>
+    </footer>
+
+    <script src="{{ url_for('static', filename='js/index.js') }}"></script>
+</body>
+</html>
